@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    const INVALID_USER_INDEX = -1;
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     let userTodos = JSON.parse(localStorage.getItem("userTodoLists")) || [];
     let todos = userTodos.find(user => user.userId === currentUser.userId)?.todos || [];
@@ -176,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saveTodos() {
         const userIndex = userTodos.findIndex(user => user.userId === currentUser.userId);
-        if (userIndex !== -1) {
+        if (userIndex !== INVALID_USER_INDEX) {
             userTodos[userIndex].todos = todos; 
         } else {
             userTodos.push({ userId: currentUser.userId, todos: todos });
@@ -186,6 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.editTask = editTask;
     window.deleteTask = deleteTask;
     window.toggleTask = toggleTask;
-
+    
     renderTodoList();
 });
