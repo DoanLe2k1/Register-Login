@@ -9,26 +9,23 @@ function registerUser() {
         return;
     }
     const emailExists = userLists.some(data => data.email === email);
-    if (emailExists === email) {
+    if (emailExists) {
         alert("Email Already Taken!");
         return;
     } 
-    else {
-        if (password !== repeatPassword) {
-            alert("Passwords do not match!");
-            return; 
-        } 
-        const userId = generateUserId();
-        userLists.push({
-            userId: userId,
-            email: email,
-            password: password
-        });
-        localStorage.setItem("users", JSON.stringify(userLists));
-        alert("Register Successful!");
-        window.location.href = "login.html";
-    }
-    
+    if (password !== repeatPassword) {
+        alert("Passwords do not match!");
+        return; 
+    } 
+    const userId = generateUserId();
+    userLists.push({
+        userId: userId,
+        email: email,
+        password: password
+    });
+    localStorage.setItem("users", JSON.stringify(userLists));
+    alert("Register Successful!");
+    window.location.href = "login.html";
 }
 
 function loginUser() {
@@ -187,6 +184,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.editTask = editTask;
     window.deleteTask = deleteTask;
     window.toggleTask = toggleTask;
-    
+
     renderTodoList();
 });
