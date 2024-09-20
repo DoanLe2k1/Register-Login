@@ -8,26 +8,22 @@ function registerUser() {
         alert("Please fill all the blank!");
         return;
     }
-
     const emailExists = userLists.some(data => data.email === email);
     if (emailExists === email) {
         alert("Email Already Taken!");
         return;
     } 
     else {
-
         if (password !== repeatPassword) {
             alert("Passwords do not match!");
             return; 
         } 
         const userId = generateUserId();
-
         userLists.push({
             userId: userId,
             email: email,
             password: password
         });
-
         localStorage.setItem("users", JSON.stringify(userLists));
         alert("Register Successful!");
         window.location.href = "login.html";
@@ -39,24 +35,16 @@ function loginUser() {
     const email = document.getElementById("login-email").value;
     const password = document.getElementById("login-password").value;
     const rememberMe = document.getElementById("remember-me").checked;
-
     let userLists = JSON.parse(localStorage.getItem("users")) || [];
-
-
     const currentUser = userLists.find(data => data.email === email && data.password === password);
-    
     if (currentUser) {
         alert("Login Successful");
-    
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
-
         if (rememberMe) {
             localStorage.setItem("rememberedUser", JSON.stringify({ email: currentUser.email }));
         } else {
-
             localStorage.removeItem("rememberedUser");
         }
-
         window.location.href = "index.html";
     } else {
         alert("Email or Password Invalid!");
