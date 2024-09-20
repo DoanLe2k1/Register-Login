@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body>
+    <div id="login-container" class="container" style="display: none;">
+        <h1>Login</h1>
+        <p>Please fill in this form to Login.</p>
+        <hr>
+        <br>
+        <label for="email">Email: </label>
+        <input type="email" placeholder="Enter Email" id="login-email" name="email">
+    
+        <label for="password">Password: </label>
+        <input type="password" placeholder="Enter Password" id="login-password" name="pasword">
+        
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me">Remember Me</label>
+        
+        <button class="button-secondary" onclick="loginUser()">Sign in</button>
+        <p>Don't have an account? <a href="Register.html"> Register Now</a>.</p>
+    </div>
+    <script src='script.js'></script>
+</body>
+</html>
